@@ -16,6 +16,7 @@ npm -v
 - [ ] [git](https://git-scm.com/downloads) locally installed.
  
 
+
 ## Project Description
 We will be making a clone of the game called [Cookie Clicker](https://orteil.dashnet.org/cookieclicker/). In this game, the user gets a point (click) for every time he clicks the cookie. The user can use his clicks to buy some other bonuses. 
 You will build a basic React project using functional components with Hooks that will help a user keep track of the clicks made on a button.
@@ -23,9 +24,16 @@ You will build a basic React project using functional components with Hooks that
 - Every 20 seconds, the user will get a bonus that makes every click count for `2x times` the original click value for only `5 seconds`.
 - Meaning if the user click is originally `1`, it will be counted for `2`, if it is `4`, it will count for `8`.
 - The user can use `100` clicks from his clicks count to buy a bonus called `Shadow clicker`. Every shadow clicker will give the user a 1 click per second bonus.  
-## Steps
+## Instructions
 
-### Implement a simple click counter
+### Get Started
+Run the following commands to start your project:
+```
+npm i
+npm start
+```
+
+### Step 1: Implement a simple click counter
 
 - [ ] Remove everything that is inside the App component
 - [ ] Create a new directory called components. All our components are going to be created there.
@@ -47,7 +55,7 @@ $ git commit -m "Implemented a simple click counter"
 $ git push
 ```
 
-### Implement the automatic bonus
+### Step 2: Implement the automatic bonus
 
 - [ ] Create a new state variable called `step` with `useState` hook and initialize it to `1`
 - [ ] Create a new paragraph under the score paragraph indicating the step
@@ -59,7 +67,7 @@ $ git push
 
 - [ ] Now it's time to commit your changes with a message **Implemented the automatic bonus**
 
-### Implement the shadow clicker
+### Step 3: Implement the shadow clicker
 
 - [ ] Create a new state variable called `shadowClickers` with `useState` hook and initialize it to `0`.
 - [ ] Create a new paragraph under the step paragraph indicating the number of shadowClickers the user has bought.
