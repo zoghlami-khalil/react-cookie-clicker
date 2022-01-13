@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+# React Hooks Koans
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Tha aim of this repository is to get you started with React Hooks. Feel free to refer to the documentation or to the course materials in case of need.
 
-## Available Scripts
+## Prequisites
+For this project, you will need have:
+- [ ] an IDE like [VS Code](https://code.visualstudio.com/Download)
+- [ ] an Browser like [Google Chrome](https://www.google.com/chrome/?brand=BNSD&gclid=CjwKCAiAlfqOBhAeEiwAYi43F-MdtK2HPyL25HDzyxniZfeuqPz6cuFbaAe1SR6Biilmr5XOs6JckRoCnukQAvD_BwE&gclsrc=aw.ds)
+- [ ] [Node](https://nodejs.org/en/) and npm installed.
+You can check this buy running
+```
+node -v
+npm -v
+``` 
+- [ ] [git](https://git-scm.com/downloads) locally installed.
+ 
 
-In the project directory, you can run:
+## Project Description
+We will be making a clone of the game called [Cookie Clicker](https://orteil.dashnet.org/cookieclicker/). In this game, the user gets a point (click) for every time he clicks the cookie. The user can use his clicks to buy some other bonuses. 
+You will build a basic React project using functional components with Hooks that will help a user keep track of the clicks made on a button.
 
-### `npm start`
+- Every 20 seconds, the user will get a bonus that makes every click count for `2x times` the original click value for only `5 seconds`.
+- Meaning if the user click is originally `1`, it will be counted for `2`, if it is `4`, it will count for `8`.
+- The user can use `100` clicks from his clicks count to buy a bonus called `Shadow clicker`. Every shadow clicker will give the user a 1 click per second bonus.  
+## Steps
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Implement a simple click counter
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [ ] Remove everything that is inside the App component
+- [ ] Create a new directory called components. All our components are going to be created there.
+- [ ] Create a functional component called `Main`.
+- [ ] Import the component into the `App` component and render it there.
+- [ ] Start by creating the image of the cookie. You can bring one from the internet and creating.
+- [ ] Import `useState` from `react`.
+- [ ] Create a state variable called `clicks` using `useState` hook.
+- [ ] Use the `onClick` event listener to bind an event to make the cookie clickable and bind it to a function called `handleClick`
+- [ ] Define the function handleClick inside your component. It should call `setClicks` to increment it by 1
+- [ ] Create a new paragraph on top that ouputs the current score by rendering the value of `clicks`
+- [ ] Try the behaviour and make sure the value is being incremented by 1 with every click.
+- [ ] Clear any warnings caused by `eslint`
 
-### `npm test`
+- [ ] Now it's time to commit your changes with a message **Implemented a simple click counter**
+```
+$ git add .
+$ git commit -m "Implemented a simple click counter"
+$ git push
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Implement the automatic bonus
 
-### `npm run build`
+- [ ] Create a new state variable called `step` with `useState` hook and initialize it to `1`
+- [ ] Create a new paragraph under the score paragraph indicating the step
+- [ ] Update the handleClick `method` to increment the `clicks` value by the value of `step` in the state.
+- [ ] Import `useEffect` hook from react.
+- [ ] Create a new effect with useEffect.
+- [ ] Use `setInterval` inside the effect to increment the value of `step` to `2 * step` every 20 seconds by calling `setStep` function.
+- [ ] Use `setTimeout` to make this change last for only `5 seconds`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [ ] Now it's time to commit your changes with a message **Implemented the automatic bonus**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Implement the shadow clicker
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [ ] Create a new state variable called `shadowClickers` with `useState` hook and initialize it to `0`.
+- [ ] Create a new paragraph under the step paragraph indicating the number of shadowClickers the user has bought.
+- [ ] Create a new effect that will update the value of `clicks` by the number of shadow clickers (the value of `shadowClickers`) every second.
+- [ ] Create a new button to buy new shadow clickers.
+- [ ] Bind the button to a new function called `handleBuyShadowClicker`.
+- [ ] Implement the `handleBuyShadowClicker` method to:
+    - remove 100 clicks of the current value of clicks
+    - increment the number of shadow clickers by 1.
+- [ ] Add a condition to the `handleBuyShadowClicker` method to only allow user to buy shadow clickers when he has enough balance.
+- [ ] Test the behaviour and clear all the warnings in the console.
 
-### `npm run eject`
+- [ ] Now it's time to commit your changes with a message **Implemented shadow clickers**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Persist the state of the user thanks to localstorage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If the user exists or refreshes the page, all his progress will be lost. That's why we will use the localstorage to persist all the values in our state
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- [ ] Call `localStorage.setItem()` to save the new values whenever we have an update inside our effects and methods
+- [ ] Create a new effect that **`Only runs when we first visit the page`**
+- [ ] Inside that effect, call `localstorage.getItem()` to set our state variables to the values in the localstorage **`if they exist`**
+- [ ] We can enhance this behaviour with a new effect that runs every 10 seconds to save all the current state of the game
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- [ ] Test the behaviour and clear all the warnings in the console.
 
-## Learn More
+- [ ] Now it's time to commit your changes with a message **Implemented state persistence**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Extra
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you are done wih the features of the game, you can go ahead and refactor your styles and layouts to give a better experience to the players
 
-### Code Splitting
+### Resources
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Class Material on Moodle
+- [ReactJS Documentation](https://git-scm.com/downloads)
+- [React useEffect Documentation](https://reactjs.org/docs/hooks-effect.html)
+- [React useState Documentation](https://reactjs.org/docs/hooks-state.html)
+- [LocalStorage Documentation](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
