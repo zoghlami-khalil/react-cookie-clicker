@@ -1,4 +1,4 @@
-# React Hooks Koans
+# React Cookie Clicker
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 Tha aim of this repository is to get you started with React Hooks. Feel free to refer to the documentation or to the course materials in case of need.
