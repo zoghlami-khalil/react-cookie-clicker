@@ -6,13 +6,27 @@ const Main = () => {
     const [shadowClickers,setshadowClickers] = useState(0);
     const handleClick = ()=> {
         setClicks(clicks +step);
+        
     }
     const handleBuyShadowClicker = () => {
         setClicks(prevClicks=>prevClicks -100)
         setshadowClickers(shadowClickers + 1)
     }
 
+    useEffect(() => {
+        localStorage.getItem(clicks)
+        localStorage.getItem(shadowClickers)
+        localStorage.getItem(step)
+       },[])
+
    useEffect(() => {
+    localStorage.setItem('clicks',clicks)
+    localStorage.setItem('shadowClickers',shadowClickers)
+    localStorage.setItem('step',shadowClickers)
+   }, [clicks,shadowClickers,step])
+
+
+    useEffect(() => {
        setInterval(()=>{
         console.log("first step",step)   
         setStep(step*2)
