@@ -14,8 +14,6 @@ node -v
 npm -v
 ``` 
 - [ ] [git](https://git-scm.com/downloads) locally installed.
- 
-
 
 ## Project Description
 We will be making a clone of the game called [Cookie Clicker](https://orteil.dashnet.org/cookieclicker/). In this game, the user gets a point (click) for every time he clicks the cookie. The user can use his clicks to buy some other bonuses. 
@@ -25,6 +23,12 @@ You will build a basic React project using functional components with Hooks that
 - Meaning if the user click is originally `1`, it will be counted for `2`, if it is `4`, it will count for `8`.
 - The user can use `100` clicks from his clicks count to buy a bonus called `Shadow clicker`. Every shadow clicker will give the user a 1 click per second bonus.  
 ## Instructions
+
+### Before you start
+You should create a fork of this repository under your github account and download it by running
+```
+$ git clone link_to_the_forked_repository
+```
 
 ### Get Started
 Run the following commands to start your project:
@@ -98,6 +102,10 @@ If the user exists or refreshes the page, all his progress will be lost. That's 
 ### Extra
 
 If you are done wih the features of the game, you can go ahead and refactor your styles and layouts to give a better experience to the players
+
+### Submit your work for code review
+
+You can submit your work by creating a Pull Request to the original repository under the name `your_first_name you_last_name`
 
 ### Resources
 
